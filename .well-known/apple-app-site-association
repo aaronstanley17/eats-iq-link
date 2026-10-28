@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["956P28Z6M2.com.aaronstanley17.refluxiq"],
+        "components": [{ "/": "/u/*", "comment": "Shared profile links (lib/share-profile.ts)" }]
+      }
+    ]
+  }
+}
