@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eats IQ</title>
+  <meta name="description" content="See what they're eating and how it scores on Eats IQ.">
+  <meta property="og:title" content="Join me on Eats IQ">
+  <meta property="og:description" content="See what I'm eating and how it scores.">
+  <meta property="og:image" content="https://link.refluxiqapp.com/icon.png">
+  <meta name="apple-itunes-app" content="app-id=6812128815">
+  <link rel="icon" href="/icon.png">
+  <!--
+    Answers every https://link.refluxiqapp.com/u/<username> link the app shares
+    (lib/share-profile.ts). GitHub Pages serves this file for any path that has no page of
+    its own, so one file covers every username. index.html is an identical copy.
+  -->
+  <style>
+    :root {
+      --bg: #FAF6EC;
+      --card: #FFFFFF;
+      --text: #1B1B1B;
+      --muted: #6B6B6B;
+      --tint: #FF7A1A;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #000000; --card: #161616; --text: #F5F5F5; --muted: #A0A0A0; }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .card {
+      width: 100%;
+      max-width: 380px;
+      background: var(--card);
+      border-radius: 24px;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
+    .icon { width: 88px; height: 88px; border-radius: 20px; }
+    h1 { font-size: 22px; margin: 20px 0 8px; word-break: break-word; }
+    p { color: var(--muted); margin: 0 0 24px; line-height: 1.45; }
+    .button {
+      display: block;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 12px;
+    }
+    .primary { background: var(--tint); color: #FFFFFF; }
+    .secondary { color: var(--tint); border: 1.5px solid var(--tint); }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img class="icon" src="/icon.png" alt="Eats IQ">
+    <h1 id="title">Eats IQ</h1>
+    <p id="subtitle">Track what you eat, see how it scores, and follow friends doing the same.</p>
+    <a id="open" class="button primary" href="gerdapp://">Open in Eats IQ</a>
+    <a class="button secondary" href="https://apps.apple.com/app/id6812128815">Get Eats IQ</a>
+  </main>
+  <script>
+    // /u/<username> — anything else just shows the general page.
+    var match = location.pathname.match(/^\/u\/([^/]+)\/?$/);
+    if (match) {
+      var name;
+      try { name = decodeURIComponent(match[1]); } catch (e) { name = match[1]; }
+      document.getElementById('title').textContent = name + ' is on Eats IQ';
+      document.getElementById('subtitle').textContent =
+        'Open the app to see their meals and follow them.';
+      document.getElementById('open').href = 'gerdapp://u/' + encodeURIComponent(name);
+      document.title = name + ' on Eats IQ';
+    }
+  </script>
+</body>
+</html>
