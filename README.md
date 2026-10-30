@@ -1,7 +1,8 @@
 # Profile link site
 
 The page behind `https://link.refluxiqapp.com/u/<username>`, the links the app's
-"Share profile" button sends (`lib/share-profile.ts`).
+"Share profile" button sends (`lib/share-profile.ts`), and `/t/<topicId>?n=<name>`, the
+links a Topic page's share button sends (`lib/share-topic.ts`).
 
 - `404.html`: GitHub Pages serves it for every `/u/<username>` address. It names the
   person and offers "Open in Eats IQ" (`gerdapp://u/<username>`) or "Get Eats IQ".

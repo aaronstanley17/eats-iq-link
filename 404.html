@@ -11,9 +11,10 @@
   <meta name="apple-itunes-app" content="app-id=6812128815">
   <link rel="icon" href="/icon.png">
   <!--
-    Answers every https://link.refluxiqapp.com/u/<username> link the app shares
-    (lib/share-profile.ts). GitHub Pages serves this file for any path that has no page of
-    its own, so one file covers every username. index.html is an identical copy.
+    Answers every https://link.refluxiqapp.com/u/<username> profile link
+    (lib/share-profile.ts) and /t/<topicId>?n=<name> Topic link (lib/share-topic.ts) the app
+    shares. GitHub Pages serves this file for any path that has no page of its own, so one
+    file covers every link. index.html is an identical copy.
   -->
   <style>
     :root {
@@ -71,8 +72,17 @@
     <a class="button secondary" href="https://apps.apple.com/app/id6812128815">Get Eats IQ</a>
   </main>
   <script>
-    // /u/<username> — anything else just shows the general page.
+    // /u/<username> or /t/<topicId> — anything else just shows the general page.
     var match = location.pathname.match(/^\/u\/([^/]+)\/?$/);
+    var topic = location.pathname.match(/^\/t\/([^/]+)\/?$/);
+    if (topic) {
+      var topicName = new URLSearchParams(location.search).get('n') || 'a Topic';
+      document.getElementById('title').textContent = 'Join ' + topicName + ' on Eats IQ';
+      document.getElementById('subtitle').textContent =
+        'A community sharing the meals that work for them. Open the app to see their posts and follow along.';
+      document.getElementById('open').href = 'gerdapp://t/' + topic[1];
+      document.title = topicName + ' on Eats IQ';
+    }
     if (match) {
       var name;
       try { name = decodeURIComponent(match[1]); } catch (e) { name = match[1]; }
