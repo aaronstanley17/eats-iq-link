@@ -1,0 +1,10 @@
+# Cloudflare Pages response headers for the static files. functions/_middleware.js sets
+# the same security headers itself on /u/* and /t/* pages.
+/*
+  Content-Security-Policy: default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  X-Frame-Options: DENY
+
+/.well-known/apple-app-site-association
+  Content-Type: application/json

@@ -1,0 +1,4 @@
+# Fallback if Functions are off: answer every profile and Topic link with index.html and HTTP 200.
+# (200 = rewrite, not redirect. iOS link previews ignore pages that come back as 404.)
+/u/*  /  200
+/t/*  /  200
